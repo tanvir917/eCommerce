@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text } from 'reat-native';
+import { FlatList, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 
 const ProductsOverviewScreen = props => {
@@ -8,7 +8,7 @@ const ProductsOverviewScreen = props => {
         <FlatList 
             data={products} 
             keyExtractor={item => item.id} 
-            renderItem={itemData => {<Text>{itemData.item.title}</Text>}} 
+            renderItem={itemData => <Text>{itemData.item.title}</Text>} 
         />
     );
 };
