@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/cart";
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/cart';
 import CartItem from '../../models/cart-item';
 
 const initialState = {
@@ -45,8 +45,12 @@ export default (state = initialState, action) => {
                 );
                 updatedCartItems = { ...state.items, [action.pid]: updatedCartItem };
             } else {
-                const updatedCartItems = { ...state.items };
+                updatedCartItems = { ...state.items };
+                console.log(updatedCartItems);
                 delete updatedCartItems[action.pid];
+                console.log('====================================');
+                console.log(updatedCartItems);
+                console.log('====================================');
             }
             return {
                 ...state,
