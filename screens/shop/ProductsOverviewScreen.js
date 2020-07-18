@@ -18,8 +18,8 @@ const ProductsOverviewScreen = props => {
             productTitle: title
         });
     }
-    
 
+    
     return (
         <FlatList 
             data={products} 
