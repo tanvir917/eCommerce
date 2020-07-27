@@ -38,7 +38,13 @@ export const fetchProducts = () => {
 }
 
 export const deleteProduct = productId => {
-    return { type: DELETE_PRODUCT, pid: productId };
+    return async dispatch => {
+        await fetch(`https://ecommerce-fed7f.firebaseio.com/products/${productId}.json`, {
+            method: 'DELETE'
+        });
+
+        dispatch ({ type: DELETE_PRODUCT, pid: productId });
+    }
 };
 
 export const createProduct = (title, description, imageUrl, price) => { 
@@ -46,7 +52,7 @@ export const createProduct = (title, description, imageUrl, price) => {
         //any async code
         const response = await fetch('https://ecommerce-fed7f.firebaseio.com/products.json', {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -77,13 +83,30 @@ export const createProduct = (title, description, imageUrl, price) => {
 };
 
 export const updateProduct = (id, title, description, imageUrl) => {
-    return { 
-        type: UPDATE_PRODUCT, 
-        pid: id,
-        productData: {
-            title,
-            description,
-            imageUrl
-        } 
-    };
-};
+    return async dispatch => {
+        await fetch(
+            `https://ecommerce-fed7f.firebaseio.com/products/${id}.json`, 
+            {
+                method: 'PATCH',//patch will update
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    imageUrl
+                })
+            }
+        );
+
+        dispatch( { 
+            type: UPDATE_PRODUCT, 
+            pid: id,
+            productData: {
+                title,
+                description,
+                imageUrl
+            } 
+        });
+    }
+}; 
