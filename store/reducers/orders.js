@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_ORDER:
             const newOrder = new Order(
-                action.orderDate.id, 
+                action.orderData.id, 
                 action.orderData.items, 
                 action.orderData.amount,
                 action.orderData.date
