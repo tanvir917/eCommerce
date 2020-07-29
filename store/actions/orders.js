@@ -35,10 +35,11 @@ export const fetchOrders = () => {
 
 //action creator
 export const addOrder = (cartItems, totalAmount) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
+        const token = getState().auth.token;
         const date = new Date();
         //send a req to store product on server
-        const response = await fetch('https://ecommerce-fed7f.firebaseio.com/orders/u1.json', {
+        const response = await fetch(`https://ecommerce-fed7f.firebaseio.com/orders/u1.json?auth=${token}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
