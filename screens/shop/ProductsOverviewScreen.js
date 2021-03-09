@@ -14,9 +14,10 @@ import Colors from '../../constants/Colors';
 const ProductsOverviewScreen = props => {
     const [isLoading, setIsLoading] = useState(false);
     const [isRefreshing, setIsRefreshing] = useState(false);
+    const [error, setError] = useState();
     const [value, setValue] = useState();
     
-    const [error, setError] = useState();
+    
     const products = useSelector(state => state.products.availableProducts);
     const [arrayholder, setArrayholder] = useState(products);
     const dispatch = useDispatch();

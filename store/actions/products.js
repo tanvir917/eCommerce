@@ -8,6 +8,7 @@ export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const fetchProducts = () => {
     return async (dispatch, getState) => { 
         const userId = getState().auth.userId;
+        console.log('dispatching');
         //any async code
         try {
             const response = await fetch('https://ecommerce-fed7f.firebaseio.com/products.json') ;
@@ -22,7 +23,7 @@ export const fetchProducts = () => {
             for (const key in resData) {
                 loadedProducts.push(new Product(
                     key, 
-                    resData[key].ownerId, 
+                    resData[key].ownerId,  
                     resData[key].title,
                     resData[key].imageUrl,
                     resData[key].description,

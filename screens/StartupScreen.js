@@ -6,7 +6,7 @@ import Colors from '../constants/Colors';
 import * as authActions from '../store/actions/auth';
 
 const StartupScreen = props => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
 
     useEffect(() => {
         const tryLogin = async () => {
